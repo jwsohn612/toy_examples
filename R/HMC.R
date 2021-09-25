@@ -51,8 +51,9 @@ HMC <- function(y, U, grad_mu, epsilon, L, current_q){
 # The total iteration number is T
 T <- 1000
 posterior_mu <- c()
+q <- quantile(y, 0.10)
 for(t in 1:T){
-  q <- HMC(y, U, grad_mu, epsilon = 0.01, L=50, current_q = quantile(y, 0.5))
+  q <- HMC(y, U, grad_mu, epsilon = 0.1, L=10, current_q = q)
   posterior_mu <- append(posterior_mu, q)
 }
 
